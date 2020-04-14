@@ -7,11 +7,15 @@ import { FontAwesome } from '@expo/vector-icons';
 
 
 const HistoricForecastListScreen = ({ navigation }) => {
+
     const { state } = useContext(ForecastContext);
+    const forecasts = state.filter(t => {
+        return t.resolved === true
+    })
     return (
         <View>
         <FlatList 
-            data={state}
+            data={forecasts}
             keyExtractor={ item => item.id }
             renderItem={( { item }) => {
                 console.log(item.id)

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Alert, Image, FlatList, TouchableOpacity, View, StyleSheet, Text } from 'react-native';
 import { Context as ForecastContext } from '../context/ForecastContext';
 import { ListItem } from 'react-native-elements';
@@ -8,10 +8,14 @@ import { FontAwesome } from '@expo/vector-icons'
 const CurrentForecastListScreen = ({ navigation }) => {
     const { state } = useContext(ForecastContext)
 
+    const forecasts = state.filter(t => {
+        return t.resolved === false
+    })
+
     return (
         <View style={styles.viewDebug}>
         <FlatList 
-            data={state}
+            data={forecasts}
             keyExtractor={ item => item.id }
             renderItem={( { item } ) => {
                 return (
@@ -45,8 +49,8 @@ const styles = StyleSheet.create({
     viewDebug: {
         flexDirection: 'column',
         flex:1,
-        borderWidth: 3,
-        borderColor: 'red',
+        //borderWidth: 3,
+        //borderColor: 'red',
         backgroundColor: '#F5F5F5'
     },
     toDebug: {

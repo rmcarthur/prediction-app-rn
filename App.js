@@ -10,6 +10,8 @@ import HistoricForecastListScreen from './src/screens/HistoricForecastListScreen
 import ForecastDetailScreen from './src/screens/ForecastDetailScreen';
 import { FontAwesome } from '@expo/vector-icons';
 import CreateForecastScreen from './src/screens/CreateForecastScreen';
+import { setNavigator } from './src/navigationRef';
+
 
 
 const CurrentForecastStackNavigator = createStackNavigator({
@@ -44,6 +46,6 @@ const App = createAppContainer(
 export default () => {
   return (
   <ForecastProvider>
-    <App />
+    <App ref={(navigator => {setNavigator(navigator)})} />
   </ForecastProvider>)
 }

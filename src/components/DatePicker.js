@@ -15,7 +15,6 @@ const Header = styled.View`
   justify-content: flex-end;
   align-items: flex-end;
   background-color: white;
-  border-bottom-width: 1;
   border-color: grey;
 `;
 export default class DatePicker extends React.Component {

@@ -55,14 +55,14 @@ const CreateForecast = ({ _id }) => {
                     onClose={date => {
                         if (date && Platform.OS !== 'iOS') {
                             setShowDatePicker(false)
-                            setExpDate(moment(date))
+                            setExpDate(date)
                             setPrettyDate(moment(expDate).format('MMMM Do YYYY, h:mm:ss a'))
                         } else {
                             setShowDatePicker(false)
                         }
                     }}
                     onChange={d => {
-                        setExpDate(moment(d))
+                        setExpDate(d)
                         setPrettyDate(moment(expDate).format('MMMM Do YYYY, h:mm:ss a'))
                     }}
             />
@@ -72,7 +72,6 @@ const CreateForecast = ({ _id }) => {
             <Button 
                 title="Save"
                 onPress={() => {
-                    console.log("STUFF");
                     saveForecast({
                         title,
                         description,
@@ -105,8 +104,8 @@ const styles = StyleSheet.create({
         height:100
     },
     container: {
-        borderColor: 'red',
-        borderWidth: 6,
+        //borderColor: 'red',
+        //borderWidth: 6,
         flex:1,
     }
 });
